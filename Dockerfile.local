@@ -1,0 +1,28 @@
+# 의존성 설치 스테이지
+FROM python:3.9.18 AS builder-base
+LABEL maintainer="bluewhale <developers@bluewhale.kr>"
+
+RUN apt-get update -y && curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.4.2 python3 -
+ENV PATH="/root/.local/bin:$PATH"
+WORKDIR /root/mmoai
+COPY mmoai/pyproject.toml mmoai/poetry.lock* ./
+RUN poetry config virtualenvs.create false && poetry install --only main
+
+# 최종 애플리케이션 빌드 스테이지
+FROM builder-base AS app
+LABEL maintainer="bluewhale <developers@bluewhale.kr>"
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+RUN apt-get update -y
+WORKDIR /root/mmoai
+
+# 의존성 설치 스테이지에서 설치한 의존성 복사
+COPY --from=builder-base /root/.local /root/.local
+ENV PATH="/root/.local/bin:$PATH"
+
+COPY . /root/mmoai/
+
+ENV PYTHONPATH=/root/mmoai
+
+CMD ["python", "./app/main.py"]
