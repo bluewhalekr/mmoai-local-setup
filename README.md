@@ -17,7 +17,7 @@ cd mmoai-local-setup
 git clone git@github.com:bluewhalekr/mmoai.git
 ```
 
-### 2. docker compose로 프로젝트 환경 실행
+### 2. docker compose로 mmoai 서버 실행
 ```
 # docker compose 실행
 docker compose build
