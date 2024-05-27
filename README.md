@@ -2,9 +2,6 @@
 
 mmoai 로컬 셋업
 
-## Requirements (Mac 기준)
-> Docker Desktop (상황에 따라 설정에서 Resources 증가)
-
 ## Instructions
 ### 1. git clone
 ```
