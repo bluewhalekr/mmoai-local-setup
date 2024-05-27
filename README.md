@@ -14,6 +14,13 @@ cd mmoai-local-setup
 git clone git@github.com:bluewhalekr/mmoai.git
 ```
 
+### 3. .env 파일 생성
+```
+# mmoai/.env
+# mmoai/.env.example 파일을 복사하여 생성
+cp .env.example mmoai/.env
+```
+
 ### 2. docker compose로 mmoai 서버 실행
 ```
 # docker compose 실행
