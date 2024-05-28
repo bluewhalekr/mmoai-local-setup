@@ -4,9 +4,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.local
+    restart: always
     command: []
+    environment:
+      - MONGODB_HOST=local-mongodb
+
     volumes:
       - ./mmoai:/root/mmoai
+
+    depends_on:
+      - local-mongodb
 
     links:
       - local-mongodb
