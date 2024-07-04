@@ -24,5 +24,3 @@ ENV PATH="/root/.local/bin:$PATH"
 COPY . /root/mmoai/
 
 ENV PYTHONPATH=/root/mmoai
-
-CMD ["python", "./app/main.py"]

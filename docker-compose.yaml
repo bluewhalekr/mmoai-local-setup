@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile.local
     restart: always
-    command: []
+    command: ["tail", "-f", "/dev/null"]
     environment:
       - MONGODB_HOST=local-mongodb
 
