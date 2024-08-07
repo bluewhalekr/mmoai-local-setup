@@ -13,13 +13,23 @@ cd mmoai-local-setup
 # gtaas-processing 프로젝트
 git clone git@github.com:bluewhalekr/mmoai.git
 ```
+#### 노션 페이지의 세팅 방법을 같이 참고해야 합니다.
+[노션 주소](https://www.notion.so/aimmo/MMOAI-f05b8d754eb14e13a4984d532acd8a39?pvs=4#f6b00451bd16458e906eb1d9fccb2c03)
 
-### 2. docker compose로 mmoai 서버 실행
+
+### 2. docker compose로 mmoai container 실행
 ```
 # docker compose 실행
 docker compose build
 
 docker compose up -d
+```
+
+### 3. mmoai container 접속 후 mmoai 실행
+```
+docker compose exec local-mmoai bash
+
+python app/main.py
 ```
 
 ### 3. 사용 후 혹은 로컬 세팅 configuration 업데이트 시
