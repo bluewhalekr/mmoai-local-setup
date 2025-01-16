@@ -1,6 +1,8 @@
 # 의존성 설치 스테이지
 FROM python:3.9.18 AS builder-base
 LABEL maintainer="bluewhale <developers@bluewhale.kr>"
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update -y && curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.4.2 python3 -
 ENV PATH="/root/.local/bin:$PATH"
